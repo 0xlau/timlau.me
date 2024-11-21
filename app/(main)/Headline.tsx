@@ -7,17 +7,18 @@ import { SparkleIcon, UserSecurityIcon } from '~/assets'
 import { PeekabooLink } from '~/components/links/PeekabooLink'
 import { SocialLink } from '~/components/links/SocialLink'
 
-function Developer() {
+function FullStack() {
   return (
     <span className="group">
-      <span className="font-mono">&lt;</span>开发者
+      <span className="font-mono">&lt;</span>
+      全栈开发
       <span className="font-mono">/&gt;</span>
-      <span className="invisible inline-flex text-zinc-300 before:content-['|'] group-hover:visible group-hover:animate-typing dark:text-zinc-500" />
+      <span className="visible inline-flex animate-typing text-zinc-300 before:content-['|'] dark:text-zinc-500" />
     </span>
   )
 }
 
-function Designer() {
+function OpenSourcer() {
   return (
     <span className="group relative bg-black/5 p-1 dark:bg-white/5">
       <span className="pointer-events-none absolute inset-0 border border-lime-700/90 opacity-70 group-hover:border-dashed group-hover:opacity-100 dark:border-lime-400/90">
@@ -26,12 +27,12 @@ function Designer() {
         <span className="absolute -bottom-[3.5px] -left-[3.5px] size-1.5 border border-lime-700 bg-zinc-50 dark:border-lime-400" />
         <span className="absolute -right-[3.5px] -top-[3.5px] size-1.5 border border-lime-700 bg-zinc-50 dark:border-lime-400" />
       </span>
-      设计师
+      开源贡献者
     </span>
   )
 }
 
-function OCD() {
+function DetailOriented() {
   return (
     <span className="group inline-flex items-center">
       <SparkleIcon className="mr-1 inline-flex transform-gpu transition-transform duration-500 group-hover:rotate-180" />
@@ -40,11 +41,11 @@ function OCD() {
   )
 }
 
-function Founder() {
+function IndependentDev() {
   return (
     <span className="group inline-flex items-center">
       <UserSecurityIcon className="mr-1 inline-flex group-hover:fill-zinc-600/20 dark:group-hover:fill-zinc-200/20" />
-      <span>创始人</span>
+      <span>学习创业中...</span>
     </span>
   )
 }
@@ -63,10 +64,11 @@ export function Headline() {
           duration: 0.3,
         }}
       >
-        <Developer />，<Designer />，
-        <span className="block h-2" />
-        <OCD />，<Founder />
+        <FullStack />，<OpenSourcer />，
+        <span className="block h-3" />
+        <DetailOriented />，<IndependentDev />
       </motion.h1>
+
       <motion.p
         className="mt-6 text-base text-zinc-600 dark:text-zinc-400"
         initial={{ opacity: 0, y: 20 }}
@@ -80,12 +82,13 @@ export function Headline() {
         }}
       >
         <Balancer>
-          我是 Cali，
-          <PeekabooLink href="https://zolplay.com">佐玩</PeekabooLink>
-          创始人，目前带领着佐玩致力于创造一个充满创造力的工作环境，同时鼓励团队创造影响世界的产品。
-          我热爱开发，设计，创新，享受生活，以及在未知领域中探索。
+          我是 Timothy， 现位于{' '}
+          <PeekabooLink href="https://yuanze.com">原则科技</PeekabooLink>
+          工作，目前与一个充满创造力的原则科技团队共同创造一些有趣、有用、好玩产品。
+          我热爱开发，创新，享受 Coding，享受生活，以及在未知领域中探索。
         </Balancer>
       </motion.p>
+
       <motion.div
         className="mt-6 flex gap-6"
         initial={{ opacity: 0, y: 10 }}
@@ -99,33 +102,28 @@ export function Headline() {
         }}
       >
         <SocialLink
-          href="https://cali.so/twitter"
+          href="https://timlau.me/twitter"
           aria-label="我的推特"
           platform="twitter"
         />
         <SocialLink
-          href="https://cali.so/youtube"
-          aria-label="我的 YouTube"
-          platform="youtube"
-        />
-        <SocialLink
-          href="https://cali.so/bilibili"
+          href="https://timlau.me/bilibili"
           aria-label="我的 Bilibili"
           platform="bilibili"
         />
         <SocialLink
-          href="https://cali.so/github"
+          href="https://timlau.me/github"
           aria-label="我的 GitHub"
           platform="github"
         />
         <SocialLink
-          href="https://cali.so/tg"
+          href="https://timlau.me/tg"
           aria-label="我的 Telegram"
           platform="telegram"
         />
         <SocialLink href="/feed.xml" platform="rss" aria-label="RSS 订阅" />
         <SocialLink
-          href="mailto:hi@cali.so"
+          href="mailto:hi@timlau.me"
           aria-label="我的邮箱"
           platform="mail"
         />
