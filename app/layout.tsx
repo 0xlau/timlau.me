@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     default: seo.title,
   },
   description: seo.description,
-  keywords: 'Timothy,Timothy Lau,刘沛强,全栈开发,开发者,开源,细节控,创新',
+  keywords:
+    'Timothy,Timothy Lau,码农小易,刘沛强,全栈开发,开发者,开源,细节控,创新',
   manifest: '/site.webmanifest',
   robots: {
     index: true,

@@ -83,7 +83,7 @@ export function Headline() {
       >
         <Balancer>
           我是 Timothy， 现位于{' '}
-          <PeekabooLink href="https://yuanze.com">原则科技</PeekabooLink>
+          <PeekabooLink href="https://lusun.com">原则科技</PeekabooLink>
           工作，目前与一个充满创造力的原则科技团队共同创造一些有趣、有用、好玩产品。
           我热爱开发，创新，享受 Coding，享受生活，以及在未知领域中探索。
         </Balancer>
