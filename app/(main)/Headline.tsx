@@ -11,7 +11,7 @@ function FullStack() {
   return (
     <span className="group">
       <span className="font-mono">&lt;</span>
-      全栈开发
+      开发者
       <span className="font-mono">/&gt;</span>
       <span className="visible inline-flex animate-typing text-zinc-300 before:content-['|'] dark:text-zinc-500" />
     </span>
@@ -27,7 +27,7 @@ function OpenSourcer() {
         <span className="absolute -bottom-[3.5px] -left-[3.5px] size-1.5 border border-lime-700 bg-zinc-50 dark:border-lime-400" />
         <span className="absolute -right-[3.5px] -top-[3.5px] size-1.5 border border-lime-700 bg-zinc-50 dark:border-lime-400" />
       </span>
-      开源贡献者
+      爱开源
     </span>
   )
 }
@@ -45,7 +45,7 @@ function IndependentDev() {
   return (
     <span className="group inline-flex items-center">
       <UserSecurityIcon className="mr-1 inline-flex group-hover:fill-zinc-600/20 dark:group-hover:fill-zinc-200/20" />
-      <span>学习创业中...</span>
+      <span>学习创业中</span>
     </span>
   )
 }
@@ -85,7 +85,7 @@ export function Headline() {
           我是 Timothy， 现位于{' '}
           <PeekabooLink href="https://lusun.com">原则科技</PeekabooLink>
           工作，目前与一个充满创造力的原则科技团队共同创造一些有趣、有用、好玩产品。
-          我热爱开发，创新，享受 Coding，享受生活，以及在未知领域中探索。
+          我热爱开发，创新，开源，享受 Coding，享受生活，以及在未知领域中探索。
         </Balancer>
       </motion.p>
 

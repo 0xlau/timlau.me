@@ -4,8 +4,10 @@ import './prism.css'
 
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 
 import { ThemeProvider } from '~/app/(main)/ThemeProvider'
+import { env } from '~/env.mjs'
 import { url } from '~/lib'
 import { zhCN } from '~/lib/clerkLocalizations'
 import { sansFont } from '~/lib/font'
@@ -44,8 +46,8 @@ export const metadata: Metadata = {
     url: 'https://timlau.me',
   },
   twitter: {
-    site: '@thecalicastle',
-    creator: '@thecalicastle',
+    site: '@thetimothylau',
+    creator: '@thetimothylau',
     card: 'summary_large_image',
     title: seo.title,
     description: seo.description,
@@ -87,6 +89,15 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </body>
+        {env.VERCEL_ENV === 'production' &&
+          env.NEXT_PUBLIC_UMAMI_URL &&
+          env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <Script
+              defer
+              src={env.NEXT_PUBLIC_UMAMI_URL}
+              data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            />
+          )}
       </html>
     </ClerkProvider>
   )
