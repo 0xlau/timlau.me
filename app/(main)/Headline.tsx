@@ -6,6 +6,7 @@ import Balancer from 'react-wrap-balancer'
 import { SparkleIcon, UserSecurityIcon } from '~/assets'
 import { PeekabooLink } from '~/components/links/PeekabooLink'
 import { SocialLink } from '~/components/links/SocialLink'
+import { Timlau } from '~/components/Timlau'
 
 function FullStack() {
   return (
@@ -82,10 +83,14 @@ export function Headline() {
         }}
       >
         <Balancer>
-          我是 Timothy， 现位于{' '}
+          <span>我是</span> <Timlau className="mx-2 mb-2.5 inline-flex h-6" />{' '}
+          <span>， 现位于 </span>
           <PeekabooLink href="https://lusun.com">原则科技</PeekabooLink>
-          工作，目前与一个充满创造力的原则科技团队共同创造一些有趣、有用、好玩产品。
-          我热爱开发，创新，开源，享受 Coding，享受生活，以及在未知领域中探索。
+          <span>
+            工作，目前与一个充满创造力的原则科技团队共同创造一些有趣、有用、好玩产品。
+            我热爱开发，创新，开源，享受
+            Coding，享受生活，以及在未知领域中探索。
+          </span>
         </Balancer>
       </motion.p>
 
