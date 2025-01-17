@@ -1,5 +1,5 @@
 import { count, isNotNull } from 'drizzle-orm'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import React from 'react'
 
 import { CursorClickIcon, UsersIcon } from '~/assets'
@@ -15,17 +15,17 @@ import { redis } from '~/lib/redis'
 
 import { Newsletter } from './Newsletter'
 
-function NavLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
+type NavLinkProps = LinkProps &
+  React.ComponentPropsWithoutRef<'a'> & {
+    children: React.ReactNode
+  }
+
+function NavLink({ href, children, ...props }: NavLinkProps) {
   return (
     <Link
       href={href}
       className="transition hover:text-lime-500 dark:hover:text-lime-400"
+      {...props}
     >
       {children}
     </Link>
@@ -36,7 +36,7 @@ function Links() {
   return (
     <nav className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
       {navigationItems.map(({ href, text }) => (
-        <NavLink key={href} href={href}>
+        <NavLink key={href} href={href} title={text}>
           {text}
         </NavLink>
       ))}
@@ -117,7 +117,10 @@ export async function Footer() {
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
               <p className="text-sm text-zinc-500/80 dark:text-zinc-400/80">
                 &copy; {new Date().getFullYear()} Timothy Lau. <br></br>网站基于{' '}
-                <PeekabooLink href="https://github.com/CaliCastle/cali.so">
+                <PeekabooLink
+                  href="https://github.com/CaliCastle/cali.so"
+                  rel="nofollow"
+                >
                   cali.so
                 </PeekabooLink>
                 构建。

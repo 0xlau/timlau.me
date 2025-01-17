@@ -3,19 +3,18 @@
 import { Popover, type PopoverProps, Transition } from '@headlessui/react'
 import { clsxm } from '@zolplay/utils'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import { navigationItems } from '~/config/nav'
 
-function NavItem({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
+type NavLinkProps = LinkProps &
+  React.ComponentPropsWithoutRef<'a'> & {
+    children: React.ReactNode
+  }
+
+function NavItem({ href, children, ...props }: NavLinkProps) {
   const isActive = usePathname() === href
 
   return (
@@ -28,6 +27,7 @@ function NavItem({
             ? 'text-lime-600 dark:text-lime-400'
             : 'hover:text-lime-600 dark:hover:text-lime-400'
         )}
+        {...props}
       >
         {children}
         {isActive && (
@@ -81,7 +81,7 @@ function Desktop({
 
       <ul className="flex bg-transparent px-3 text-sm font-medium text-zinc-800 dark:text-zinc-200 ">
         {navigationItems.map(({ href, text }) => (
-          <NavItem key={href} href={href}>
+          <NavItem key={href} href={href} title={text}>
             {text}
           </NavItem>
         ))}
