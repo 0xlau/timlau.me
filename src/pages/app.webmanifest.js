@@ -5,9 +5,9 @@ export async function GET() {
   const manifest = {
     id: withBasePath('/'),
     name: 'Timothy Lau',
-    short_name: 'AntfuStyle',
+    short_name: 'Timothy Lau',
     description:
-      'A customizable, feature-rich Astro theme for blog and portfolio',
+      'Personal blog of Timothy Lau, a software engineer passionate about web development and open source.',
     icons: [
       {
         src: withBasePath('icon-192.png'),
