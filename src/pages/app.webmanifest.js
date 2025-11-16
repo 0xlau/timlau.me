@@ -4,7 +4,7 @@ export async function GET() {
   // https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest
   const manifest = {
     id: withBasePath('/'),
-    name: 'Astro AntfuStyle Theme',
+    name: 'Timothy Lau',
     short_name: 'AntfuStyle',
     description:
       'A customizable, feature-rich Astro theme for blog and portfolio',

@@ -1,12 +1,10 @@
 ---
 import { getCollection } from 'astro:content'
 
-import Link from '~/components/base/Link.astro'
 import GithubItem from '~/components/views/GithubItem.astro'
 import Warning from '~/components/base/Warning.astro'
 import { UI } from '~/config'
 import { formatDate, isDiffMonth } from '~/utils/datetime'
-import { withBasePath } from '~/utils/path'
 import { matchLogo, extractPackageName, processVersion } from '~/utils/data'
 
 import type { RepoWithOwner, Url, Icon } from '~/types'
@@ -170,36 +168,6 @@ if (collectionType === 'prs') {
               {formatDate(new Date())}
             </time>
           </span>
-          <span class="lt-sm:hidden">&nbsp;|&nbsp;</span>
-          <span>
-            Scheduled refresh:
-            <span class="text-[var(--fg-deeper)]">Every Saturday</span>
-          </span>
-        </p>
-        <p class="my-0! lt-sm:my-1.5!">
-          See
-          <Link
-            class="op-100!"
-            href={withBasePath('/blog/customizing-github-activity-pages/')}
-          >
-            Customizing GitHub Activity Pages
-          </Link>
-          to configure your own
-        </p>
-        <p class="my-0! lt-sm:my-1.5!">
-          Inspired by
-          <Link
-            class="op-100!"
-            href={
-              collectionType === 'releases'
-                ? 'https://releases.antfu.me/'
-                : 'https://prs.atinux.com/'
-            }
-          >
-            {collectionType === 'releases'
-              ? 'releases.antfu.me'
-              : 'prs.atinux.com'}
-          </Link>
         </p>
       </div>
     </div>

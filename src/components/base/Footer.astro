@@ -8,9 +8,14 @@ const copyrightText = `© ${currentYear} ${SITE.author}`
 
 <footer class="slide-enter animate-delay-1600! px-7 mt-auto mb-8">
   <div class="prose mx-auto op-50">
-    <div class="flex lt-sm:flex-col items-center text-sm whitespace-nowrap">
-      <span>{copyrightText}</span>
-      <span class="lt-sm:hidden">&nbsp;|&nbsp;</span>
+    <div class="flex flex-col items-start text-sm whitespace-nowrap gap-2">
+      <span>
+        <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          class="op-100! color-[--fg]!">CC BY-NC-SA 4.0</a
+        >
+        {copyrightText}
+      </span>
       <span>
         Powered by
         <Link
@@ -18,7 +23,7 @@ const copyrightText = `© ${currentYear} ${SITE.author}`
           href="https://github.com/lin-stephanie/astro-antfustyle-theme"
           external={true}
         >
-          Astro AntfuStyle Theme
+          Astro
         </Link>
       </span>
     </div>

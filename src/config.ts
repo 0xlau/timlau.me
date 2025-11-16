@@ -3,10 +3,10 @@ import type { Site, Ui, Features } from './types'
 export const SITE: Site = {
   website: 'https://astro-antfustyle-theme.vercel.app/',
   base: '/',
-  title: 'Astro AntfuStyle Theme',
+  title: 'Timothy Lau',
   description:
     'A customizable, feature-rich Astro theme for blog and portfolio creation',
-  author: 'Stephanie Lin',
+  author: 'Timothy Lau',
   lang: 'en',
   ogLocale: 'en_US',
   imageDomains: ['cdn.bsky.app', 'images.unsplash.com'],
@@ -25,13 +25,6 @@ export const UI: Ui = {
       title: 'Projects',
       displayMode: 'alwaysText',
       text: 'Projects',
-    },
-    {
-      path: '/highlights',
-      title: 'Highlights',
-      displayMode: 'iconToTextOnMobile',
-      text: 'Highlights',
-      icon: 'i-ri-screenshot-line',
     },
     {
       path: '/photos',
@@ -57,22 +50,16 @@ export const UI: Ui = {
   ],
   socialLinks: [
     {
-      link: 'https://github.com/lin-stephanie/astro-antfustyle-theme',
-      title: 'AntfuStyle on Github',
+      link: 'https://github.com/0xlau',
+      title: 'Timothy Lau on Github',
       displayMode: 'alwaysIcon',
       icon: 'i-uil-github-alt',
     },
     {
-      link: 'https://x.com/astrodotbuild',
-      title: 'Astro on Twitter',
+      link: 'https://x.com/thetimothylau',
+      title: 'Timothy Lau on Twitter',
       displayMode: 'alwaysIcon',
       icon: 'i-ri-twitter-x-fill',
-    },
-    {
-      link: 'https://bsky.app/profile/astro.build',
-      title: 'Astro on Bluesky',
-      displayMode: 'alwaysIcon',
-      icon: 'i-meteor-icons-bluesky',
     },
   ],
   navBarLayout: {
