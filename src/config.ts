@@ -5,7 +5,7 @@ export const SITE: Site = {
   base: '/',
   title: 'Timothy Lau',
   description:
-    'A customizable, feature-rich Astro theme for blog and portfolio creation',
+    'Personal blog of Timothy Lau. Sharing my thoughts on programming, technology, and life.',
   author: 'Timothy Lau',
   lang: 'en',
   ogLocale: 'en_US',
@@ -40,13 +40,6 @@ export const UI: Ui = {
       text: 'Shorts',
       icon: 'i-meteor-icons-grid',
     },
-    {
-      path: '/changelog',
-      title: 'Changelog',
-      displayMode: 'iconToTextOnMobile',
-      text: 'Changelog',
-      icon: 'i-ri-draft-line',
-    },
   ],
   socialLinks: [
     {
@@ -76,9 +69,8 @@ export const UI: Ui = {
     mergeOnMobile: true,
   },
   tabbedLayoutTabs: [
-    { title: 'Changelog', path: '/changelog' },
-    { title: 'AstroBlog', path: '/feeds' },
-    { title: 'AstroStreams', path: '/streams' },
+    { title: 'Blog', path: '/blog' },
+    { title: 'Streams', path: '/streams' },
   ],
   groupView: {
     maxGroupColumns: 3,
@@ -164,7 +156,7 @@ export const FEATURES: Features = {
   search: [
     true,
     {
-      includes: ['blog', 'changelog'],
+      includes: ['blog'],
       filter: true,
       navHighlight: true,
       batchLoadSize: [true, 5],

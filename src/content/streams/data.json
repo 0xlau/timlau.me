@@ -1,72 +1,23 @@
 [
   {
-    "id": "Astro in 100 Seconds",
-    "pubDate": "2021-07-16",
-    "link": "https://www.youtube.com/watch?v=dsTXcSeAZq8",
+    "id": "试图绕过哔站审核投稿？",
+    "pubDate": "2024-04-12",
+    "link": "https://www.bilibili.com/video/BV1Rx4y1h7GX",
     "video": true,
-    "platform": "YouTube"
+    "platform": "哔哩哔哩"
   },
   {
-    "id": "I Tried Astro and I LOVE IT - 5 Reasons You Will TOO!",
-    "pubDate": "2022-08-30",
-    "link": "https://www.youtube.com/watch?v=wND4lSml31A",
+    "id": "给哔站改善了 4 个细节",
+    "pubDate": "2024-03-21",
+    "link": "https://www.bilibili.com/video/BV1kA4m1P7my",
     "video": true,
-    "platform": "YouTube"
+    "platform": "哔哩哔哩"
   },
   {
-    "id": "Everything You Need to Know about Astro",
-    "pubDate": "2023-09-19",
-    "link": "https://www.youtube.com/watch?v=rRxuVOutmFQ",
+    "id": "毕业就做了个这玩意儿？咋毕业的？",
+    "pubDate": "2021-05-08",
+    "link": "https://www.bilibili.com/video/BV11q4y1J7UA",
     "video": true,
-    "platform": "YouTube"
-  },
-  {
-    "id": "You Don’t Know How to SSR",
-    "pubDate": "2024-02-16",
-    "link": "https://gitnation.com/contents/you-dont-know-how-to-ssr",
-    "video": true,
-    "platform": "GitNation"
-  },
-  {
-    "id": "View Transitions: Fact vs. Fiction",
-    "pubDate": "2023-10-20",
-    "link": "https://www.youtube.com/watch?v=iT-3amHK7tA",
-    "video": true,
-    "platform": "YouTube"
-  },
-  {
-    "id": "Astro and MDX for digital gardening",
-    "pubDate": "2023-11-08",
-    "link": "https://podrocket.logrocket.com/astro-mdx-kathleen-mcmahon",
-    "radio": true,
-    "platform": "PodRocket"
-  },
-  {
-    "id": "Astro Launches an Integrated Database",
-    "pubDate": "2024-03-18",
-    "link": "https://shoptalkshow.com/607/",
-    "radio": true,
-    "platform": "ShopTalk"
-  },
-  {
-    "id": "Building faster websites with Astro",
-    "pubDate": "2023-01-20",
-    "link": "https://www.youtube.com/watch?v=0eka27P4Pr4",
-    "video": true,
-    "platform": "YouTube"
-  },
-  {
-    "id": "Astro Web Framework Crash Course",
-    "pubDate": "2023-09-29",
-    "link": "https://www.youtube.com/watch?v=e-hTm5VmofI",
-    "video": true,
-    "platform": "YouTube"
-  },
-  {
-    "id": "Astro Quick Start Course | Build an SSR Blog",
-    "pubDate": "2023-12-19",
-    "link": "https://www.youtube.com/watch?v=XoIHKO6AkoM",
-    "video": true,
-    "platform": "YouTube"
+    "platform": "哔哩哔哩"
   }
 ]

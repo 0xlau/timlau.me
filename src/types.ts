@@ -388,7 +388,7 @@ interface Tab {
   title: string
 }
 
-export type Tabs = [Tab, Tab, ...Tab[]]
+export type Tabs = [Tab, ...Tab[]]
 
 interface GroupView {
   /**
