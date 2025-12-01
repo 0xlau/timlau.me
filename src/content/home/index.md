@@ -2,11 +2,9 @@ Hey! I’m Timothy Lau, a fanatical open sourceror and full-stack developer who 
 
 Working at :link{#@yuanze-dev}
 
-Programming has been my lifelong companion, and the enthusiasm never let up. Even now, writing code is the place I return to when life gets heavy. It relaxes me, inspires me, and occasionally convinces me that I was probably a program in a past life.
+Programming has been my lifelong companion, and the enthusiasm never let up. Even now, writing code is the place I return to when life gets heavy. It relaxes me, inspires me.
 
-Before I die, I want to contribute something meaningful to the world—no matter whether it’s a tiny tool that boosts someone’s productivity or a goofy little project that sparks joy. If someone finds value in it, that’s enough to fuel me for the next build.
-
-Off the keyboard, my partner and I live with five cats. Yes, I have allergic rhinitis. Yes, I still love them. And yes, my partner often complains that I haven’t figured out how to properly exit “coding mode” before trying to operate in “life mode.”
+My grand ambition? To build something genuinely meaningful—whether it’s a tiny tool that makes someone say “oh nice,” or a silly little project that sparks unexpected joy. If someone finds value in it, my motivation bar refills instantly.
 
 When I’m not building things, you’ll probably find me traveling, diving into electronic music, or losing badminton games with grace. And when I feel contemplative, my mind wanders to astronomy, cosmology, physics—the big stuff I haven’t had time to truly explore… yet.
 
