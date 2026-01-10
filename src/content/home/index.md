@@ -2,7 +2,7 @@ Hey! I’m Timothy Lau, a fanatical open sourceror and full-stack developer who 
 
 Working at :link{#@yuanze-dev}
 
-Programming has been my lifelong companion, and the enthusiasm never let up. Even now, writing code is the place I return to when life gets heavy. It relaxes me, inspires me.
+Programming has been my lifelong companion, and the enthusiasm never let up. Even now, writing code is where I return when I feel anxious. It relaxes me and inspires me.
 
 My grand ambition? To build something genuinely meaningful—whether it’s a tiny tool that makes someone say “oh nice,” or a silly little project that sparks unexpected joy. If someone finds value in it, my motivation bar refills instantly.
 

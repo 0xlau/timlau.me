@@ -15,7 +15,7 @@ import type { SatoriOptions } from 'satori'
 import type { html } from 'satori-html'
 import type { BgType } from '../src/types'
 
-const Inter = readFileSync('plugins/og-template/Inter-Regular-24pt.ttf')
+const NotoSansSC = readFileSync('plugins/og-template/NotoSansSC-Regular.ttf')
 
 const satoriOptions: SatoriOptions = {
   // debug: true,
@@ -23,10 +23,10 @@ const satoriOptions: SatoriOptions = {
   height: 630,
   fonts: [
     {
-      name: 'Inter',
+      name: 'Noto Sans SC',
       weight: 400,
       style: 'normal',
-      data: Inter,
+      data: NotoSansSC,
     },
   ],
 }
