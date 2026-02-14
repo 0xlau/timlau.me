@@ -147,8 +147,8 @@ export const FEATURES: Features = {
   share: [
     true,
     {
-      twitter: [true, '@ste7lin'],
-      bluesky: [true, '@ste7lin.bsky.social'],
+      twitter: [true, '@thetimothylau'],
+      bluesky: [true, '@timlau.me'],
       mastodon: false,
       facebook: false,
       pinterest: false,
@@ -161,16 +161,16 @@ export const FEATURES: Features = {
   giscus: [
     true,
     {
-      'data-repo': 'lin-stephanie/astro-antfustyle-theme',
-      'data-repo-id': 'R_kgDOLylKbA',
-      'data-category': 'Giscus',
-      'data-category-id': 'DIC_kwDOLylKbM4Cpugn',
+      'data-repo': '0xlau/timlau.me',
+      'data-repo-id': 'R_kgDONS1p_A',
+      'data-category': 'Announcements',
+      'data-category-id': 'DIC_kwDONS1p_M4C2cH6',
       'data-mapping': 'title',
       'data-strict': '0',
       'data-reactions-enabled': '1',
       'data-emit-metadata': '0',
       'data-input-position': 'bottom',
-      'data-lang': 'en',
+      'data-lang': 'zh-CN',
     },
   ],
   search: [

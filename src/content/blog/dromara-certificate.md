@@ -6,7 +6,7 @@ lastModDate: ''
 ogImage: true
 toc: true
 share: true
-giscus: false
+giscus: true
 search: false
 ---
 
