@@ -21,7 +21,14 @@ bgm:
     source: "https://files.timlau.me/blog/audios/i_love_you_so.mp3"
     title: "I LOVE YOU SO"
     author: "The Walters"
+  - cover: "https://files.timlau.me/blog/images/20260218032605396.webp"
+    source: "https://files.timlau.me/blog/audios/beanie.mp3"
+    title: "Beanie"
+    author: "Chezile"
 ---
+
+> [!TIP] 为此准备了四首歌
+> 它们安静地存在于那段时间里。在广场的黑暗中，在海边的风里，在某些无人知晓的夜晚。如果你在阅读时听见它们，也许会短暂地，与当时的我相遇。
 
 今日的感受，与以往大多数过年的感受完全不同。
 
