@@ -97,6 +97,19 @@ export const postSchema = z.object({
     .describe(
       'Specifies the platform where the audio or video content is published. If provided, the platform name will be displayed. If not needed, leave the field as an empty string or delete it.'
     ),
+  bgm: z
+    .array(
+      z.object({
+        cover: z.string().url('Invalid url.'),
+        source: z.string().url('Invalid url.'),
+        title: z.string(),
+        author: z.string(),
+      })
+    )
+    .optional()
+    .describe(
+      'Optional background music playlist. Each item requires `cover`, `source`, `title`, and `author`.'
+    ),
   ogImage: z
     .union([z.string(), z.boolean()])
     .default(true)

@@ -1,0 +1,653 @@
+---
+interface BgmTrack {
+  cover: string
+  source: string
+  title: string
+  author: string
+}
+
+interface Props {
+  tracks?: BgmTrack[]
+}
+
+const { tracks = [] } = Astro.props
+if (tracks.length === 0) return
+
+const serializedTracks = JSON.stringify(tracks).replace(/</g, '\\u003c')
+---
+
+<mini-player
+  class="mini-player print:hidden"
+  data-tracks={serializedTracks}
+  data-ready="false"
+>
+  <div class="mini-player-card">
+    <div
+      data-trigger
+      class="mini-player-trigger"
+      role="button"
+      tabindex="0"
+      aria-label="Toggle player controls"
+      aria-expanded="false"
+    >
+      <img
+        data-cover
+        class="mini-player-cover"
+        alt=""
+        loading="eager"
+        decoding="async"
+      />
+      <p data-title class="mini-player-title"></p>
+    </div>
+
+    <div data-controls class="mini-player-controls" aria-hidden="true">
+      <button
+        type="button"
+        data-prev
+        class="mini-player-button"
+        aria-label="Previous track"
+      >
+        <span class="i-ri-skip-back-fill" aria-hidden="true"></span>
+      </button>
+      <button
+        type="button"
+        data-play
+        data-main="true"
+        class="mini-player-button"
+        aria-label="Play"
+      >
+        <span
+          data-play-icon-play
+          class="mini-player-icon i-ri-play-large-fill"
+          aria-hidden="true"></span>
+        <span
+          data-play-icon-pause
+          class="mini-player-icon i-ri-pause-large-fill"
+          aria-hidden="true"
+          hidden></span>
+      </button>
+      <button
+        type="button"
+        data-next
+        class="mini-player-button"
+        aria-label="Next track"
+      >
+        <span class="i-ri-skip-forward-fill" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <audio data-audio preload="metadata">
+      <track
+        kind="captions"
+        srclang="en"
+        label="Background music"
+        src="data:text/vtt,WEBVTT"
+      />
+    </audio>
+  </div>
+</mini-player>
+
+<script>
+  interface BgmTrack {
+    cover: string
+    source: string
+    title: string
+    author: string
+  }
+
+  const PLAYER_TAG_NAME = 'mini-player'
+
+  class MiniPlayerElement extends HTMLElement {
+    #tracks: BgmTrack[] = []
+    #index = 0
+    #loadToken = 0
+    #autoplayPending = false
+
+    #audio: HTMLAudioElement | null = null
+    #cover: HTMLImageElement | null = null
+    #title: HTMLElement | null = null
+    #trigger: HTMLElement | null = null
+    #controls: HTMLElement | null = null
+    #playButton: HTMLButtonElement | null = null
+    #playIconPlay: HTMLElement | null = null
+    #playIconPause: HTMLElement | null = null
+    #prevButton: HTMLButtonElement | null = null
+    #nextButton: HTMLButtonElement | null = null
+    #onAutoplayRetry = () => {
+      if (!this.#autoplayPending || !this.#audio) return
+      this.#tryPlay(false)
+    }
+
+    #onTogglePlay = () => {
+      if (!this.#audio) return
+
+      if (this.#audio.paused) {
+        this.#tryPlay(false)
+      } else {
+        this.#audio.pause()
+      }
+    }
+
+    #onPrev = () => {
+      if (!this.#audio || this.#index <= 0) return
+      const autoplay = !this.#audio.paused
+      this.#loadTrack(this.#index - 1, autoplay)
+    }
+
+    #onNext = () => {
+      if (!this.#audio || this.#index >= this.#tracks.length - 1) return
+      const autoplay = !this.#audio.paused
+      this.#loadTrack(this.#index + 1, autoplay)
+    }
+
+    #onPlay = () => {
+      this.#syncPlayState(true)
+    }
+
+    #onPause = () => {
+      this.#syncPlayState(false)
+    }
+
+    #onEnded = () => {
+      if (!this.#audio) return
+
+      if (this.#index < this.#tracks.length - 1) {
+        this.#loadTrack(this.#index + 1, true)
+        return
+      }
+
+      this.#loadTrack(0, true)
+    }
+
+    #onTriggerClick = () => {
+      this.#setExpanded(this.dataset.expanded !== 'true')
+    }
+
+    #onTriggerKeydown = (event: KeyboardEvent) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return
+
+      event.preventDefault()
+      this.#setExpanded(this.dataset.expanded !== 'true')
+    }
+
+    connectedCallback() {
+      if (this.dataset.initialized === 'true') return
+      this.dataset.initialized = 'true'
+
+      this.#tracks = this.#parseTracks()
+      if (this.#tracks.length === 0) {
+        this.remove()
+        return
+      }
+
+      this.#cacheElements()
+      this.#bindEvents()
+      this.#setExpanded(false)
+      this.#setReady(false)
+      this.#syncNavState()
+      this.#loadTrack(0, true)
+    }
+
+    disconnectedCallback() {
+      this.#unbindEvents()
+      this.#clearAutoplayRetry()
+    }
+
+    #cacheElements() {
+      this.#audio = this.querySelector('[data-audio]')
+      this.#cover = this.querySelector('[data-cover]')
+      this.#title = this.querySelector('[data-title]')
+      this.#trigger = this.querySelector('[data-trigger]')
+      this.#controls = this.querySelector('[data-controls]')
+      this.#playButton = this.querySelector('[data-play]')
+      this.#playIconPlay = this.querySelector('[data-play-icon-play]')
+      this.#playIconPause = this.querySelector('[data-play-icon-pause]')
+      this.#prevButton = this.querySelector('[data-prev]')
+      this.#nextButton = this.querySelector('[data-next]')
+    }
+
+    #bindEvents() {
+      this.#trigger?.addEventListener('click', this.#onTriggerClick)
+      this.#trigger?.addEventListener('keydown', this.#onTriggerKeydown)
+      this.#playButton?.addEventListener('click', this.#onTogglePlay)
+      this.#prevButton?.addEventListener('click', this.#onPrev)
+      this.#nextButton?.addEventListener('click', this.#onNext)
+
+      this.#audio?.addEventListener('play', this.#onPlay)
+      this.#audio?.addEventListener('pause', this.#onPause)
+      this.#audio?.addEventListener('ended', this.#onEnded)
+    }
+
+    #unbindEvents() {
+      this.#trigger?.removeEventListener('click', this.#onTriggerClick)
+      this.#trigger?.removeEventListener('keydown', this.#onTriggerKeydown)
+      this.#playButton?.removeEventListener('click', this.#onTogglePlay)
+      this.#prevButton?.removeEventListener('click', this.#onPrev)
+      this.#nextButton?.removeEventListener('click', this.#onNext)
+
+      this.#audio?.removeEventListener('play', this.#onPlay)
+      this.#audio?.removeEventListener('pause', this.#onPause)
+      this.#audio?.removeEventListener('ended', this.#onEnded)
+    }
+
+    #parseTracks(): BgmTrack[] {
+      const raw = this.dataset.tracks ?? '[]'
+
+      try {
+        const parsed = JSON.parse(raw)
+        if (!Array.isArray(parsed)) return []
+
+        return parsed.filter((item): item is BgmTrack => {
+          if (!item || typeof item !== 'object') return false
+
+          const candidate = item as Partial<BgmTrack>
+          return (
+            typeof candidate.cover === 'string' &&
+            typeof candidate.source === 'string' &&
+            typeof candidate.title === 'string' &&
+            typeof candidate.author === 'string'
+          )
+        })
+      } catch {
+        return []
+      }
+    }
+
+    #loadTrack(index: number, autoplay: boolean) {
+      if (!this.#audio || this.#tracks.length === 0) return
+
+      const safeIndex = Math.min(Math.max(index, 0), this.#tracks.length - 1)
+      const track = this.#tracks[safeIndex]
+      const token = ++this.#loadToken
+
+      this.#index = safeIndex
+      this.#setReady(false)
+      this.#audio.pause()
+      this.#audio.src = track.source
+      this.#audio.load()
+
+      if (this.#cover) {
+        this.#cover.src = track.cover
+        this.#cover.alt = `${track.title} cover`
+      }
+      if (this.#title) this.#title.textContent = track.title
+
+      this.#syncPlayState(false)
+      this.#syncNavState()
+      this.#waitForTrackReady(token).then((ready) => {
+        if (!ready) return
+        this.#setReady(true)
+
+        if (!autoplay) return
+        this.#tryPlay(true)
+      })
+    }
+
+    #syncNavState() {
+      if (!this.#prevButton || !this.#nextButton) return
+
+      if (this.#tracks.length <= 1) {
+        this.#prevButton.hidden = true
+        this.#nextButton.hidden = true
+        return
+      }
+
+      this.#prevButton.hidden = false
+      this.#nextButton.hidden = false
+
+      const hasPrev = this.#index > 0
+      const hasNext = this.#index < this.#tracks.length - 1
+
+      this.#prevButton.disabled = !hasPrev
+      this.#nextButton.disabled = !hasNext
+    }
+
+    #syncPlayState(isPlaying: boolean) {
+      if (this.#playButton) {
+        this.#playButton.setAttribute(
+          'aria-label',
+          isPlaying ? 'Pause' : 'Play'
+        )
+      }
+
+      if (this.#playIconPlay) this.#playIconPlay.hidden = isPlaying
+      if (this.#playIconPause) this.#playIconPause.hidden = !isPlaying
+
+      this.#cover?.classList.toggle('is-playing', isPlaying)
+    }
+
+    #setExpanded(expanded: boolean) {
+      this.dataset.expanded = expanded ? 'true' : 'false'
+      this.#trigger?.setAttribute('aria-expanded', expanded ? 'true' : 'false')
+      this.#controls?.setAttribute('aria-hidden', expanded ? 'false' : 'true')
+    }
+
+    #setReady(ready: boolean) {
+      this.dataset.ready = ready ? 'true' : 'false'
+    }
+
+    #tryPlay(auto: boolean) {
+      if (!this.#audio) return
+
+      this.#audio
+        .play()
+        .then(() => {
+          this.#clearAutoplayRetry()
+        })
+        .catch(() => {
+          this.#syncPlayState(false)
+          if (!auto) return
+
+          this.#tryMutedAutoplayFallback()
+        })
+    }
+
+    #tryMutedAutoplayFallback() {
+      if (!this.#audio) return
+
+      const wasMuted = this.#audio.muted
+      this.#audio.muted = true
+
+      this.#audio
+        .play()
+        .then(() => {
+          this.#audio!.muted = wasMuted
+
+          if (!this.#audio?.paused) {
+            this.#clearAutoplayRetry()
+            return
+          }
+
+          this.#scheduleAutoplayRetry()
+        })
+        .catch(() => {
+          this.#audio!.muted = wasMuted
+          this.#scheduleAutoplayRetry()
+        })
+    }
+
+    #scheduleAutoplayRetry() {
+      if (this.#autoplayPending) return
+      this.#autoplayPending = true
+
+      document.addEventListener('pointerdown', this.#onAutoplayRetry, {
+        passive: true,
+      })
+      document.addEventListener('keydown', this.#onAutoplayRetry)
+      document.addEventListener('touchstart', this.#onAutoplayRetry, {
+        passive: true,
+      })
+    }
+
+    #clearAutoplayRetry() {
+      if (!this.#autoplayPending) return
+      this.#autoplayPending = false
+
+      document.removeEventListener('pointerdown', this.#onAutoplayRetry)
+      document.removeEventListener('keydown', this.#onAutoplayRetry)
+      document.removeEventListener('touchstart', this.#onAutoplayRetry)
+    }
+
+    #waitForTrackReady(token: number): Promise<boolean> {
+      return Promise.all([
+        this.#waitForCoverReady(token),
+        this.#waitForAudioReady(token),
+      ]).then(
+        ([coverReady, audioReady]) =>
+          coverReady && audioReady && token === this.#loadToken
+      )
+    }
+
+    #waitForCoverReady(token: number): Promise<boolean> {
+      const cover = this.#cover
+      if (!cover) return Promise.resolve(true)
+      if (cover.complete && cover.naturalWidth > 0)
+        return Promise.resolve(token === this.#loadToken)
+
+      return new Promise((resolve) => {
+        const onLoad = () => {
+          cleanup()
+          resolve(token === this.#loadToken)
+        }
+        const onError = () => {
+          cleanup()
+          resolve(false)
+        }
+        const cleanup = () => {
+          cover.removeEventListener('load', onLoad)
+          cover.removeEventListener('error', onError)
+        }
+
+        cover.addEventListener('load', onLoad)
+        cover.addEventListener('error', onError)
+      })
+    }
+
+    #waitForAudioReady(token: number): Promise<boolean> {
+      const audio = this.#audio
+      if (!audio) return Promise.resolve(false)
+      if (audio.readyState >= 1)
+        return Promise.resolve(token === this.#loadToken)
+
+      return new Promise((resolve) => {
+        const onReady = () => {
+          cleanup()
+          resolve(token === this.#loadToken)
+        }
+        const onError = () => {
+          cleanup()
+          resolve(false)
+        }
+        const cleanup = () => {
+          audio.removeEventListener('loadedmetadata', onReady)
+          audio.removeEventListener('loadeddata', onReady)
+          audio.removeEventListener('canplay', onReady)
+          audio.removeEventListener('error', onError)
+        }
+
+        audio.addEventListener('loadedmetadata', onReady)
+        audio.addEventListener('loadeddata', onReady)
+        audio.addEventListener('canplay', onReady)
+        audio.addEventListener('error', onError)
+      })
+    }
+  }
+
+  if (!customElements.get(PLAYER_TAG_NAME)) {
+    customElements.define(PLAYER_TAG_NAME, MiniPlayerElement)
+  }
+</script>
+
+<style>
+  .mini-player[data-ready='false'] {
+    display: none;
+  }
+
+  .mini-player {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    z-index: 80;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100vw - 1rem);
+  }
+
+  .mini-player-card {
+    --player-background: hsl(0 0% 100% / 0.96);
+    --player-border: hsl(240 5.9% 90%);
+    --player-foreground: hsl(222.2 47.4% 11.2%);
+    --player-muted: hsl(210 40% 96.1%);
+    --player-primary: hsl(221.2 83.2% 53.3%);
+    --player-primary-hover: hsl(221.2 83.2% 46%);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: fit-content;
+    max-width: min(90vw, 18rem);
+    padding: 0.28rem 0.4rem;
+    border: 1px solid var(--player-border);
+    border-radius: 9999px;
+    color: var(--player-foreground);
+    background: var(--player-background);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 22px -16px rgb(0 0 0 / 0.72);
+  }
+
+  :global(html.dark) .mini-player-card {
+    --player-background: hsl(240 10% 3.9% / 0.96);
+    --player-border: hsl(240 3.7% 15.9%);
+    --player-foreground: hsl(0 0% 98%);
+    --player-muted: hsl(240 3.7% 15.9%);
+    --player-primary: hsl(217.2 91.2% 59.8%);
+    --player-primary-hover: hsl(217.2 91.2% 53%);
+  }
+
+  .mini-player-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    min-width: 0;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .mini-player-cover {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 9999px;
+    border: 1px solid var(--player-border);
+    object-fit: cover;
+    background: var(--player-muted);
+    animation: mini-player-spin 8s linear infinite;
+    animation-play-state: paused;
+    flex-shrink: 0;
+  }
+
+  .mini-player-cover.is-playing {
+    animation-play-state: running;
+  }
+
+  .mini-player-title {
+    margin: 0;
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.76rem;
+    line-height: 1.1;
+    font-weight: 600;
+  }
+
+  .mini-player-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.26rem;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateX(-6px);
+    transition:
+      max-width 0.2s ease,
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .mini-player:hover .mini-player-controls,
+  .mini-player:focus-within .mini-player-controls,
+  .mini-player[data-expanded='true'] .mini-player-controls {
+    max-width: 10rem;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  .mini-player-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    padding: 0;
+    border-radius: 9999px;
+    border: 1px solid var(--player-border);
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .mini-player-button[hidden] {
+    display: none;
+  }
+
+  .mini-player-button:hover:not(:disabled) {
+    background: var(--player-muted);
+  }
+
+  .mini-player-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+  }
+
+  .mini-player-button[data-main='true'] {
+    color: white;
+    border-color: var(--player-primary);
+    background: var(--player-primary);
+  }
+
+  .mini-player-button[data-main='true']:hover:not(:disabled) {
+    border-color: var(--player-primary-hover);
+    background: var(--player-primary-hover);
+  }
+
+  .mini-player-icon[hidden] {
+    display: none;
+  }
+
+  @keyframes mini-player-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .mini-player {
+      top: auto;
+      left: 0.65rem;
+      bottom: 1.2rem;
+      transform: none;
+      max-width: calc(100vw - 0.7rem);
+    }
+
+    .mini-player-card {
+      max-width: calc(100vw - 0.7rem);
+      padding: 0.24rem 0.34rem;
+      gap: 0.28rem;
+    }
+
+    .mini-player-cover {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+
+    .mini-player-title {
+      max-width: 6rem;
+      font-size: 0.72rem;
+    }
+
+    .mini-player-button {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+</style>

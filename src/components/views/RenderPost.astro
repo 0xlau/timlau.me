@@ -9,6 +9,7 @@ import Toc from '~/components/toc/Toc.astro'
 import ShareLink from '~/components/widgets/ShareLink.astro'
 import Giscus from '~/components/widgets/Giscus.astro'
 import ImageViewer from '~/components/widgets/ImageViewer.astro'
+import MiniPlayer from '~/components/widgets/MiniPlayer.astro'
 import { FEATURES } from '~/config'
 
 import type { CollectionEntry } from 'astro:content'
@@ -16,6 +17,13 @@ import type { CollectionEntry } from 'astro:content'
 interface Props {
   post: CollectionEntry<'blog'>
   isCommentable?: boolean
+}
+
+interface BgmTrack {
+  cover: string
+  source: string
+  title: string
+  author: string
 }
 
 const { post, isCommentable = false } = Astro.props
@@ -34,6 +42,20 @@ const subtitle = frontmatter.subtitle
 const minutesRead =
   frontmatter.minutesRead || (remarkPluginFrontmatter.minutesRead as number)
 const isDraft = frontmatter.draft
+const rawBgm = (frontmatter.bgm ?? remarkPluginFrontmatter.bgm) as unknown
+const bgm: BgmTrack[] = Array.isArray(rawBgm)
+  ? rawBgm.filter((item): item is BgmTrack => {
+      if (!item || typeof item !== 'object') return false
+
+      const candidate = item as Partial<BgmTrack>
+      return (
+        typeof candidate.cover === 'string' &&
+        typeof candidate.source === 'string' &&
+        typeof candidate.title === 'string' &&
+        typeof candidate.author === 'string'
+      )
+    })
+  : []
 
 const tocEnabled = Array.isArray(toc) && toc[0] && frontmatter.toc
 const shareEnabled = Array.isArray(share) && share[0] && frontmatter.share
@@ -77,4 +99,5 @@ frontmatter to <code>false</code> or remove it to publish the post.`
     )
   }
   <ImageViewer selector="article" options={{ title: 0, navbar: 0 }} />
+  {bgm.length > 0 && <MiniPlayer tracks={bgm} />}
 </BaseLayout>

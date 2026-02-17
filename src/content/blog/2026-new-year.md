@@ -8,6 +8,11 @@ toc: true
 share: true
 giscus: true
 search: false
+bgm:
+  - cover: "https://files.timlau.me/blog/images/20260218015024041.webp"
+    source: "https://files.timlau.me/blog/audios/%E7%99%BE%E5%B9%B4%E4%B9%8B%E5%90%8E%E8%AF%B7%E4%B8%8E%E6%88%91%E5%9C%A8%E5%AE%87%E5%AE%99%E7%9B%B8%E8%A7%81.mp3"
+    title: "百年之后请与我在宇宙相见"
+    author: "bobo147"
 ---
 
 今日的感受，与以往大多数过年的感受完全不同。
