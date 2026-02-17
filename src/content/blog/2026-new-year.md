@@ -35,7 +35,9 @@ bgm:
 
 这一次，我没有立刻上楼，我选择走进广场，坐下。
 
-![广场一处好看的树](https://files.timlau.me/blog/images/20260217015253107.webp)
+:::image-figure{style="text-align:center"}
+![广场一处有灯光且好看的树](https://files.timlau.me/blog/images/20260217015253107.webp)
+:::
 
 因为过年的缘故，广场空无一人。没有灯光，没有声音，只有远处零星的动静。我径直走向广场中央，等待着 0 点的到来，等待着四面八方的爆竹声，等待着烟花升起，将天空一瞬一瞬地照亮，将云朵短暂地显现出来。
 
@@ -83,7 +85,9 @@ bgm:
 
 带着这种痛苦与冷静之间的感受，我决然选择前往三亚，因为那里有我很久之前有耳闻的游民社区，而我们团队的 :link[Yansoul]{#@yansoul} 正好在那边远程办公，再加上他提到，在三亚可以看到火箭发射，这种带着某种象征意味的诱导，让我几乎没有犹豫。
 
+:::image-figure{style="text-align:center"}
 ![前往三亚的航班刚起飞](https://files.timlau.me/blog/images/20260217144343556.webp)
+:::
 
 现在回头看，一切的改变，仿佛从我按下“预订机票”的那一刻，就已经开始发生了，我开始真正理解孟言在播客中提到的那句话：“增大人生的方差。” ，这也逐渐成为了我未来的人生信条之一。
 
@@ -114,7 +118,9 @@ bgm:
 
 敬过去的自己，敬未来的自己，也敬此刻，正在经历这一切的自己。
 
-![海边敬酒](https://files.timlau.me/blog/images/20260217031806958.webp)
+:::image-figure{style="text-align:center"}
+![石梅湾海边的烟花和酒](https://files.timlau.me/blog/images/20260217031806958.webp)
+:::
 
 ---
 
@@ -130,7 +136,9 @@ bgm:
 
 2026 年的第一缕阳光，穿过空气，照在我的脸上。
 
-![日出](https://files.timlau.me/blog/images/20260217032535019.webp)
+:::image-figure{style="text-align:center"}
+![石头公园的日出](https://files.timlau.me/blog/images/20260217032535019.webp)
+:::
 
 那一刻，无数感受涌上心头 —— 过去的记忆、失去的关系、尚未到来的未来，以及正在发生的一切，都在同一时间在我大脑里涌现。
 
@@ -142,7 +150,9 @@ bgm:
 
 ***它就是那个在阳光下感受到温暖时，想坐在那里待一会儿的东西。***
 
+:::image-figure{style="text-align:center"}
 ![孟言语录](https://files.timlau.me/blog/images/20260217024453037.webp)
+:::
 
 ## 莫名其妙的出现，就会莫名其妙的消失
 
@@ -160,7 +170,9 @@ bgm:
 
 现在回头看，我逐渐明白，此时此刻她的出现也许并不是为了陪我走很远的路，而是在那个节点，让我成为可以继续独自前行的人。
 
-![她留下来的唯一有连接的东西](https://files.timlau.me/blog/images/20260217045335391.webp)
+:::image-figure{style="text-align:center"}
+![她留下来的唯一有链接的东西](https://files.timlau.me/blog/images/20260217045335391.webp)
+:::
 
 ## 自检程序启动后的自救
 
@@ -174,7 +186,9 @@ bgm:
 
 ***当一个人开始对另一个人形成依恋时，大脑会将对方纳入自身的安全系统之中。一旦这种连接突然中断，神经系统并不会立刻接受这个现实，而是会持续尝试重新建立连接。***
 
+:::image-figure{style="text-align:center"}
 ![正在阅读的自救书单](https://files.timlau.me/blog/images/20260217153352515.webp)
+:::
 
 这段时间，我的理性和感性在相互搏斗，我逐渐意识到，如果我不主动采取行动，这种内部的失衡将会开始侵蚀我的正常生活与工作，我必须自救。
 
@@ -186,7 +200,9 @@ bgm:
 
 我开始从情绪的参与者，变成情绪的观察者。而在观察之中，我一点一点地，找回了自己。
 
-![flomo 的记录](https://files.timlau.me/blog/images/20260217153400974.webp)
+:::image-figure{style="text-align:center"}
+![记录了两个月的 flomo 现状](https://files.timlau.me/blog/images/20260217153400974.webp)
+:::
 
 ## 保持与世界的连接
 
@@ -200,7 +216,9 @@ bgm:
 
 婴儿刚出生时，只做一件事：对世界产生好奇。他们没有预设，没有防御，没有身份，他们只是纯粹地感知、探索、连接。但随着成长，它们逐渐被社会结构推着向前移动。在效率、目标与现实的约束下，我们慢慢丢弃了这种最原始的能力 —— 对世界的好奇，以及对连接本身的开放。可事实上，我们从未真正失去它。我们依然渴望理解他人，渴望被理解，渴望在彼此的生命中留下痕迹。
 
-![在清迈大学的温性时刻](https://files.timlau.me/blog/images/20260217170851986.webp)
+:::image-figure{style="text-align:center"}
+![在清迈大学的某处角落的温馨时刻](https://files.timlau.me/blog/images/20260217170851986.webp)
+:::
 
 因此，在今年的新年，我给那些对我意义非凡、或曾在某个阶段深刻影响过我的朋友，一个一个地送去祝福。不是为了维持某种关系的形式，而是为了确认那段连接，真实地存在过。我很感激他们的出现。正是这些看似短暂，却真实存在过的连接，一点一点地参与塑造了现在的我。
 
@@ -214,7 +232,9 @@ bgm:
 
 也许我还需要成长，也许我们的相遇只是巧合亦或者某种不可言说的同频的结果，但无论如何，那位对我来说很重要的朋友，我仍心存感激。
 
-![朋友圈截图](https://files.timlau.me/blog/images/20260217154022562.webp)
+:::image-figure{style="text-align:center"}
+![我的朋友圈截图](https://files.timlau.me/blog/images/20260217154022562.webp)
+:::
 
 ## 言叶之庭结局
 
@@ -222,7 +242,9 @@ bgm:
 >
 > 译：回想当初，那时我一定也一直在训练自己迈步，如果有一天，能够走得更稳更远了，就去见她吧。
 
+:::image-figure{style="text-align:center"}
 ![亭](https://files.timlau.me/blog/images/20260217173735566.webp)
+:::
 
 新海诚执导的《言叶之庭》，它的结局也是我此刻所处的结局。我不认为那是一个 Happy Ending 亦或者 Bad Ending，我更愿意称之为“未完待续”，它跟我们的生活一样，永远都是开放性的。
 
