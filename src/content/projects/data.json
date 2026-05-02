@@ -1,5 +1,12 @@
 [
   {
+    "id": "openbroca",
+    "link": "https://github.com/0xlau/openbroca",
+    "desc": "The input method for the post-keyboard era",
+    "icon": "i-tabler-alpha",
+    "category": "Current Focus"
+  },
+  {
     "id": "asdf-gui",
     "link": "https://github.com/EIART/asdf-gui",
     "desc": "GUI for asdf-vm, simplifying environment management for users",
