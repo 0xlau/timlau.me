@@ -164,12 +164,20 @@ export const projectSchema = z.object({
   icon: z
     .string()
     .regex(
-      /^i-[\w-]+(:[\w-]+)?$/,
-      'Icon must be in the format `i-<collection>-<icon>` or `i-<collection>:<icon>` as per [UnoCSS](https://unocss.dev/presets/icons) specs.'
+      /^\/projects\/[\w-]+\.(svg|png|webp)$/,
+      'Icon must reference a local SVG, PNG, or WebP in /public/projects/.'
     )
     .describe(
-      '**Required**. Icon representing the project. It must be in the format `i-<collection>-<icon>` or `i-<collection>:<icon>` as per [UnoCSS](https://unocss.dev/presets/icons) specs. [Check all available icons here](https://icones.js.org/).'
+      '**Required**. Path to the project logo, relative to the public directory.'
     ),
+  iconBackground: z
+    .string()
+    .regex(
+      /^#[0-9a-fA-F]{6}$/,
+      'Icon background must be a six-digit hex color.'
+    )
+    .default('#f3f4f6')
+    .describe('Background color of the rounded project icon tile.'),
   category: z.string().describe('**Required**. Category of the project.'),
 })
 

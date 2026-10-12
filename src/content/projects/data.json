@@ -1,65 +1,82 @@
 [
   {
     "id": "openbroca",
-    "link": "https://github.com/0xlau/openbroca",
+    "link": "https://openbroca.com/?ref=timlau.me",
     "desc": "The input method for the post-keyboard era",
-    "icon": "i-tabler-alpha",
+    "icon": "/projects/openbroca.webp",
+    "iconBackground": "#fff0e6",
+    "category": "Current Focus"
+  },
+  {
+    "id": "Jev",
+    "link": "https://github.com/0xlau/jev-rps",
+    "desc": "Rock-paper-scissors against AI. Jev throws first; every round is verifiable.",
+    "icon": "/projects/jev.svg",
+    "iconBackground": "#f8d45a",
     "category": "Current Focus"
   },
   {
     "id": "asdf-gui",
     "link": "https://github.com/EIART/asdf-gui",
     "desc": "GUI for asdf-vm, simplifying environment management for users",
-    "icon": "i-tabler-app-window",
+    "icon": "/projects/asdf-gui.webp",
+    "iconBackground": "#e7eaff",
     "category": "Current Focus"
   },
   {
     "id": "Whispr",
     "link": "https://github.com/whispr-ai/whispr",
     "desc": "VisionOS app, Adventurex 2025 hackathon project",
-    "icon": "i-tabler-device-vision-pro",
+    "icon": "/projects/whispr.webp",
+    "iconBackground": "#8b7cf8",
     "category": "Hackathon"
   },
   {
     "id": "Voice2Note",
     "link": "https://github.com/hardcodeNow/Unnamed",
     "desc": "First prize winner at Tsinghua University LLM Application Hackathon",
-    "icon": "i-tabler-notebook",
+    "icon": "/projects/voice2note.webp",
+    "iconBackground": "#e4edf5",
     "category": "Hackathon"
   },
   {
     "id": "biliplus",
     "link": "https://github.com/0xlau/biliplus",
     "desc": "Bilibili enhancement browser extension with detailed UX improvements",
-    "icon": "i-simple-icons-googlechrome",
+    "icon": "/projects/biliplus.webp",
+    "iconBackground": "#ffe4eb",
     "category": "Plugins & Extensions"
   },
   {
     "id": "PixelCat",
     "link": "https://github.com/0xlau/pixelcat",
     "desc": "Video encryption plugin based on pixel position rearrangement with real-time decryption playback",
-    "icon": "i-simple-icons-tampermonkey",
+    "icon": "/projects/pixelcat.svg",
+    "iconBackground": "#fff0cc",
     "category": "Plugins & Extensions"
   },
   {
     "id": "LiteflowX",
     "link": "https://plugins.jetbrains.com/plugin/19145-liteflowx",
     "desc": "IntelliJ IDEA plugin that significantly improves productivity when developing with LiteFlow framework",
-    "icon": "i-simple-icons-intellijidea",
+    "icon": "/projects/liteflowx.svg",
+    "iconBackground": "#ffe8ef",
     "category": "Plugins & Extensions"
   },
   {
     "id": "FakeDeepseek",
     "link": "https://tuwen100.com",
     "desc": "DeepSeek screenshot generator, a fun product capturing viral traffic",
-    "icon": "i-carbon-fish",
+    "icon": "/projects/fakedeepseek.webp",
+    "iconBackground": "#e8eeff",
     "category": "Just for Fun"
   },
   {
     "id": "CycleGuider",
     "link": "https://www.bilibili.com/video/BV11q4y1J7UA",
     "desc": "Graduation project conceived in 2017 and implemented in 2021",
-    "icon": "i-carbon-bicycle",
+    "icon": "/projects/cycleguider.webp",
+    "iconBackground": "#d5eee5",
     "category": "Just for Fun"
   }
 ]
